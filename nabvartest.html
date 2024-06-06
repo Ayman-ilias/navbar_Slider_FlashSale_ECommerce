@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickCart - E-commerce Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .dropdown-menu {
+            display: none;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .logo {
+            height: 40px;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            border: 2px solid #808080; /* Gray border */
+            border-radius: 50px;
+            padding: 5px 10px;
+            background-color: #fff; /* White background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .search-container input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            padding: 5px 10px;
+            border-radius: 50px;
+            background-color: #fff; /* White background */
+            color: #000; /* Black text */
+        }
+        .search-container button {
+            background-color: #fff;
+            border: none;
+            color: #808080; /* Gray icon */
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .search-container button:hover {
+            background-color: #f1f1f1;
+            color: #000;
+        }
+        .icon-button {
+            position: relative;
+            display: inline-block;
+        }
+        .icon-button .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #dc2626;
+            color: #fff;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 8px;
+            min-width: 15px;
+            text-align: center;
+        }
+        .icon-button i {
+            font-size: 24px; /* Larger icon size */
+        }
+        nav {
+            background: linear-gradient(90deg, #dc2626 0%, #ff7043 100%);
+        }
+        .nav-link {
+            position: relative;
+            display: inline-block;
+            padding: 10px 15px;
+            color: #fff;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: #ffd700;
+        }
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #ffd700;
+            left: 0;
+            bottom: -5px;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s;
+        }
+        .nav-link:hover:after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        .btn {
+            background-color: #dc2626; /* Cool Gray 800 */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #2d3748; /* Cool Gray 900 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Top Banner -->
+    <div class="bg-black text-white text-center py-2">
+        <span>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! </span>
+        <a href="#" class="text-blue-500 font-bold">Shop Now</a>
+    </div>
+
+    <!-- Main Navbar -->
+    <nav class="shadow-md">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <!-- Logo / Brand Name -->
+            <div class="flex items-center space-x-2">
+                <img src="https://via.placeholder.com/40" alt="Logo" class="logo">
+                <span class="text-2xl font-bold text-white">ClickCart</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Contact</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Dashboard</a>
+                <div class="relative dropdown">
+                    <a href="#" class="nav-link">More</a>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 dropdown-menu">
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search and Icons -->
+            <div class="flex items-center space-x-4">
+                <div class="icon-button">
+                    <button class="text-white hover:text-gray-300 transition duration-300 ease-in-out">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <span class="badge">5</span>
+                </div>
+                <div class="icon-button">
+                    <button class="text-white hover:text-gray-300 transition duration-300 ease-in-out">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    <span class="badge">3</span>
+                </div>
+                <div class="relative search-container">
+                    <input type="text" placeholder="What are you looking for?">
+                    <button>
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="md:hidden text-white hover:text-gray-300 transition duration-300 ease-in-out navbar-toggler">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="#" class="btn">Login</a>
+                <a href="#" class="btn">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dropdown Menu for Mobile -->
+    <div class="md:hidden bg-white shadow-md hidden" id="mobile-menu">
+        <div class="container mx-auto py-4 px-6">
+            <a href="#" class="block text-gray-800 py-2 hover:main-color transition duration-300 ease-in-out">Home</a>
+            <a href="#" class="block text-gray-800 py-2 hover:main-color transition duration-300 ease-in-out">Contact</a>
+            <a href="#" class="block text-gray-800 py-2 hover:main-color transition duration-300 ease-in-out">About</a>
+            <a href="#" class="block text-gray-800 py-2 hover:main-color transition duration-300 ease-in-out">Dashboard</a>
+            <a href="#" class="block text-gray-800 py-2 hover:main-color transition duration-300 ease-in-out">Settings</a>
+            <a href="#" class="block btn">Login</a>
+            <a href="#" class="block btn">Sign Up</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+
+            navbarToggler.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('fade-in');
+            });
+        });
+    </script>
+</body>
+</html>

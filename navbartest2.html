@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickCart - E-commerce Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Custom animation */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .dropdown-menu {
+            display: none;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .main-color {
+            color: #dc2626; /* Basic Color */
+        }
+        .main-bg-color {
+            background-color: #dc2626; /* Basic Color */
+        }
+        .main-bg-color:hover {
+            background-color: #b71c1c; /* Slightly darker shade */
+        }
+        .main-border-color {
+            border-color: #dc2626; /* Basic Color */
+        }
+        .logo {
+            height: 40px;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            border: 2px solid #000; /* Dark border color */
+            border-radius: 50px;
+            padding: 5px 10px;
+            background-color: #fff; /* White inner background */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+        .search-container:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border-color: #dc2626;
+        }
+        .search-container input {
+            border: none;
+            outline: none;
+            flex-grow: 1;
+            padding: 5px 10px;
+            border-radius: 50px;
+            background-color: #fff; /* White input background */
+            color: #000;
+        }
+        .search-container button {
+            background-color: #000; /* Dark button background */
+            border: none;
+            color: #fff; /* White icon color */
+            border-radius: 50%;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .search-container button:hover {
+            background-color: #b71c1c;
+            transform: rotate(360deg);
+            color: #fff;
+        }
+        .icon-button {
+            position: relative;
+            display: inline-block;
+        }
+        .icon-button .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #dc2626;
+            color: #fff;
+            border-radius: 50%;
+            padding: 3px 6px;
+            font-size: 8px;
+            min-width: 15px;
+            text-align: center;
+        }
+        .icon-button i {
+            font-size: 24px; /* Larger icon size */
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .icon-button:hover i {
+            color: #dc2626; /* Change icon color on hover */
+            transform: scale(1.2);
+        }
+        .navbar-link {
+            position: relative;
+            padding-bottom: 2px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #dc2626;
+            transition: width 0.4s ease;
+            -webkit-transition: width 0.4s ease;
+        }
+        .navbar-link:hover {
+            color: #dc2626;
+        }
+        .navbar-link:hover::after {
+            width: 100%;
+            left: 0;
+            background-color: #b71c1c;
+        }
+        .navbar-button {
+            padding: 10px 20px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-button:hover {
+            background-color: #b71c1c;
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Top Banner -->
+    <div class="bg-black text-white text-center py-2">
+        <span>Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%! </span>
+        <a href="#" class="text-blue-500 font-bold">Shop Now</a>
+    </div>
+
+    <!-- Main Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <!-- Logo / Brand Name -->
+            <div class="flex items-center space-x-2">
+                <img src="https://via.placeholder.com/40" alt="Logo" class="logo">
+                <span class="text-2xl font-bold main-color">ClickCart</span>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#" class="text-gray-800 navbar-link transition duration-300 ease-in-out">Home</a>
+                <a href="#" class="text-gray-800 navbar-link transition duration-300 ease-in-out">Contact</a>
+                <a href="#" class="text-gray-800 navbar-link transition duration-300 ease-in-out">About</a>
+                <a href="#" class="text-gray-800 navbar-link transition duration-300 ease-in-out">Dashboard</a>
+                <div class="relative dropdown">
+                    <a href="#" class="text-gray-800 navbar-link transition duration-300 ease-in-out">More</a>
+                    <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 dropdown-menu">
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search and Icons -->
+            <div class="flex items-center space-x-4">
+                <div class="icon-button">
+                    <button class="text-gray-800 transition duration-300 ease-in-out">
+                        <i class="fas fa-heart"></i>
+                    </button>
+                    <span class="badge">5</span>
+                </div>
+                <div class="icon-button">
+                    <button class="text-gray-800 transition duration-300 ease-in-out">
+                        <i class="fas fa-shopping-cart"></i>
+                    </button>
+                    <span class="badge">3</span>
+                </div>
+                <div class="relative search-container">
+                    <input type="text" placeholder="What are you looking for?">
+                    <button>
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <button class="md:hidden text-gray-800 transition duration-300 ease-in-out navbar-toggler">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="#" class="main-bg-color text-white py-2 px-4 navbar-button">Login</a>
+                <a href="#" class="main-bg-color text-white py-2 px-4 navbar-button">Sign Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dropdown Menu for Mobile -->
+    <div class="md:hidden bg-white shadow-md hidden" id="mobile-menu">
+        <div class="container mx-auto py-4 px-6">
+            <a href="#" class="block text-gray-800 py-2 navbar-link transition duration-300 ease-in-out">Home</a>
+            <a href="#" class="block text-gray-800 py-2 navbar-link transition duration-300 ease-in-out">Contact</a>
+            <a href="#" class="block text-gray-800 py-2 navbar-link transition duration-300 ease-in-out">About</a>
+            <a href="#" class="block text-gray-800 py-2 navbar-link transition duration-300 ease-in-out">Dashboard</a>
+            <a href="#" class="block text-gray-800 py-2 navbar-link transition duration-300 ease-in-out">Settings</a>
+            <a href="#" class="block main-bg-color text-white py-2 px-4 rounded-lg navbar-button">Login</a>
+            <a href="#" class="block main-bg-color text-white py-2 px-4 rounded-lg navbar-button">Sign Up</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+
+            navbarToggler.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('fade-in');
+            });
+        });
+    </script>
+</body>
+</html>

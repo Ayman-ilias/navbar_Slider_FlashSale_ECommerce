@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickCart - E-commerce Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css" integrity="sha512-OQDNdI5rpnZ0BRhhJc+btbbtnxaj+LdQFeh0V9/igiEPDiWE2fG+ZsXl0JEH+bjXKPJ3zcXqNyP4/F/NegVdZg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideDown {
+            from { transform: translateY(-10px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        /* @keyframes logoBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        } */
+        @keyframes logoFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .slide-down {
+            animation: slideDown 0.5s ease-in-out;
+        }
+        .logo-animation {
+            animation: logoBounce 2s infinite, logoFadeIn 1s ease-in-out;
+        }
+        .dropdown-menu {
+            display: none;
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .main-color {
+            color: #dc2626; /* Basic Color */
+        }
+        .main-bg-color {
+            background-color: #dc2626; /* Basic Color */
+        }
+        .main-bg-color:hover {
+            background-color: #b71c1c; /* Slightly darker shade */
+        }
+        .main-border-color {
+            border-color: #dc2626; /* Basic Color */
+        }
+        .logo {
+            height: 40px;
+        }
+        .search-container {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 5px 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, border-color 0.3s ease;
+            width: 500px;
+        }
+        .search-container:hover {
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+            border-color: #ccc;
+        }
+        .search-container select, .search-container input {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: #333;
+            font-size: 16px;
+        }
+        .search-container select {
+            margin-right: 10px;
+            padding: 5px 10px;
+        }
+        .search-container input {
+            flex-grow: 1;
+            padding: 5px 10px;
+        }
+        .search-container input::placeholder {
+            color: #999;
+            opacity: 1;
+        }
+        .search-container button {
+            background-color: transparent;
+            border: none;
+            color: #333;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .icon-button {
+            position: relative;
+            display: inline-block;
+            margin-left: 20px;
+        }
+        .icon-button .badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background-color: #dc2626;
+            color: #fff;
+            border-radius: 50%;
+            padding: 4px 7px;
+            font-size: 10px;
+            min-width: 20px;
+            text-align: center;
+        }
+        .icon-button i {
+            font-size: 32px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .icon-button:hover i {
+            color: #dc2626;
+            transform: scale(1.2);
+        }
+        .navbar-link {
+            position: relative;
+            padding-bottom: 2px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .navbar-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            display: block;
+            margin-top: 5px;
+            right: 0;
+            background: #dc2626;
+            transition: width 0.4s ease;
+        }
+        .navbar-link:hover {
+            color: #dc2626;
+        }
+        .navbar-link:hover::after {
+            width: 100%;
+            left: 0;
+            background-color: #b71c1c;
+        }
+        .navbar-button {
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-button:hover {
+            background-color: #b71c1c;
+            transform: scale(1.05);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        .hidden-buttons {
+            display: none;
+        }
+        /* New styles for login/signup dropdown */
+        #login-signup-dropdown {
+            animation: slideDown 0.3s ease-in-out;
+        }
+        #login-signup-dropdown a {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        #login-signup-dropdown a:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.05);
+        }
+        #login-signup-dropdown a .icon {
+            margin-right: 10px;
+            transition: transform 0.3s ease;
+        }
+        #login-signup-dropdown a:hover .icon {
+            transform: translateX(5px);
+        }
+        /* Mobile menu */
+        #mobile-menu {
+            display: none;
+        }
+        #mobile-menu.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Main Navbar -->
+    <nav class="bg-white shadow-md">
+        <div class="container mx-auto flex justify-between items-center py-4 px-6">
+            <!-- Logo / Brand Name -->
+            <div class="flex items-center space-x-2 logo-animation">
+                <img src="./clickcart_logo.png" alt="Logo" class="logo">
+                <span class="text-2xl font-bold main-color">ClickCart</span>
+            </div>
+
+            <!-- Navigation Links and Search Box Container -->
+            <div class="hidden md:flex flex-1 justify-center items-center space-x-6">
+                <!-- Navigation Links -->
+                <div class="hidden md:flex space-x-6 items-center">
+                    <a href="#" class="navbar-link text-gray-800">Home</a>
+                    <a href="#" class="navbar-link text-gray-800">Contact</a>
+                    <a href="#" class="navbar-link text-gray-800">About</a>
+                    <a href="#" class="navbar-link text-gray-800">Dashboard</a>
+                    <div class="relative dropdown">
+                        <a href="#" class="navbar-link text-gray-800">More</a>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 dropdown-menu">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Settings</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Box -->
+                <div class="relative search-container mx-6">
+                    <select>
+                        <option value="all">All Categories</option>
+                        <option value="electronics">Electronics</option>
+                        <option value="fashion">Fashion</option>
+                        <option value="home">Home</option>
+                        <option value="beauty">Beauty</option>
+                    </select>
+                    <input type="text" placeholder="What are you looking for?">
+                    <button>
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Icons and Login/Signup -->
+            <div class="flex items-center space-x-6">
+                <div class="icon-button">
+                    <button class="text-gray-800 hover:main-color transition duration-300 ease-in-out">
+                        <i class="ri-heart-line"></i>
+                    </button>
+                    <span class="badge">5</span>
+                </div>
+                <div class="icon-button">
+                    <button class="text-gray-800 hover:main-color transition duration-300 ease-in-out">
+                        <i class="ri-shopping-cart-fill"></i>
+                    </button>
+                    <span class="badge">3</span>
+                </div>
+                <button class="md:hidden text-gray-800 hover:main-color transition duration-300 ease-in-out navbar-toggler">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="relative">
+                    <button id="login-signup-icon" class="text-gray-800 hover:main-color transition duration-300 ease-in-out">
+                        <i class="ri-login-circle-line" style="font-size: 32px;"></i>
+                    </button>
+                    <div id="login-signup-dropdown" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-2 hidden-buttons">
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100"><i class="ri-login-box-line icon"></i>Login</a>
+                        <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100"><i class="ri-user-add-line icon"></i>Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dropdown Menu for Mobile -->
+    <div class="md:hidden bg-white shadow-md hidden" id="mobile-menu">
+        <div class="container mx-auto py-4 px-6">
+            <a href="#" class="block text-gray-800 py-2 hover:main-color transition duration-300 ease-in-out">Home</a>
+            <a href="#" class="block text-gray-800 py-2 hover:main-color transition duration-300 ease-in-out">Contact</a>
+            <a href="#" class="block text-gray-800 py-2 hover:main-color transition duration-300 ease-in-out">About</a>
+            <a href="#" class="block text-gray-800 py-2 hover:main-color transition duration-300 ease-in-out">Dashboard</a>
+            <a href="#" class="block text-gray-800 py-2 hover:main-color transition duration-300 ease-in-out">Settings</a>
+            <a href="#" class="block main-bg-color text-white py-2 px-4 rounded-lg hover:bg-main-color transition duration-300 ease-in-out">Login</a>
+            <a href="#" class="block main-bg-color text-white py-2 px-4 rounded-lg hover:bg-main-color transition duration-300 ease-in-out">Sign Up</a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const loginSignupIcon = document.getElementById('login-signup-icon');
+            const loginSignupDropdown = document.getElementById('login-signup-dropdown');
+
+            navbarToggler.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('fade-in');
+            });
+
+            loginSignupIcon.addEventListener('click', () => {
+                loginSignupDropdown.classList.toggle('hidden-buttons');
+                loginSignupDropdown.classList.toggle('fade-in');
+            });
+        });
+    </script>
+</body>
+</html>
+

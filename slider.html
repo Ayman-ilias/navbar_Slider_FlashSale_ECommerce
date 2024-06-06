@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClickCart - Slider Banner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f3f4f6; /* Light gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: white;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            max-width: 1500px;
+            margin: 20px;
+        }
+
+        .category-menu {
+            width: 250px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-right: 20px;
+            align-self: flex-start; /* Align category menu to the top */
+        }
+
+        .category-menu h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .category-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-menu li {
+            margin-bottom: 15px;
+        }
+
+        .category-menu li a {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .category-menu li a:hover {
+            color: #ffffff; /* White color on hover */
+            background-color: #dc2626; /* Theme color */
+        }
+
+        .slider {
+            overflow: hidden;
+            position: relative;
+            width: 1100px;
+            height: 600px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            background-color: #1a1a1a;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            display: flex;
+            box-sizing: border-box;
+            height: 100%;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .slider-nav button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-nav button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .slide-content {
+            background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent black */
+            color: white;
+            padding: 40px;
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-radius: 15px 0 0 15px;
+        }
+
+        .slide-image {
+            width: 50%;
+            height: auto; /* Allow image to adjust height automatically */
+            background-size: contain; /* Contain the image within the div */
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 0 15px 15px 0;
+            background-color: #f3f4f6;
+        }
+
+        .dot-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background-color: #dc2626;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .slide-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 0.7rem;
+            font-weight: 700;
+        }
+
+        .slide-content p {
+            font-size: 1.7rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .slide-content a {
+            display: inline-block;
+            background-color: #dc2626; /* Theme color */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-content a:hover {
+            background-color: #b91c1c; /* Darker shade of the theme color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="category-menu">
+            <h2>Exclusive Part</h2>
+            <ul>
+                <li><a href="#">Woman’s Fashion</a></li>
+                <li><a href="#">Men’s Fashion</a></li>
+                <li><a href="#">Electronics</a></li>
+                <li><a href="#">Home & Lifestyle</a></li>
+                <li><a href="#">Medicine</a></li>
+                <li><a href="#">Sports & Outdoor</a></li>
+                <li><a href="#">Baby’s & Toys</a></li>
+                <li><a href="#">Groceries & Pets</a></li>
+                <li><a href="#">Health & Beauty</a></li>
+            </ul>
+        </div>
+        <div class="slider relative">
+            <div class="slides">
+                <div class="slide">
+                    <div class="slide-content flex items-center justify-center text-left">
+                        <div>
+                            <h2>iPhone 14 Series</h2>
+                            <p>Up to 10% off Voucher</p>
+                            <a href="#">Shop Now →</a>
+                        </div>
+                    </div>
+                    <div class="slide-image" style="background-image: url('./iPhone-14-Pro-Max-PNG.png');"></div>
+                </div>
+                <div class="slide">
+                    <div class="slide-content flex items-center justify-center text-left">
+                        <div>
+                            <h2>Samsung Galaxy S21</h2>
+                            <p>Up to 15% off Voucher</p>
+                            <a href="#">Shop Now →</a>
+                        </div>
+                    </div>
+                    <div class="slide-image" style="background-image: url('./WhatsApp\ Image\ 2024-06-02\ at\ 23.15.03_3df284ea.jpg');"></div>
+                </div>
+                <!-- Add more slides as needed -->
+            </div>
+            <div class="slider-nav">
+                <button class="prev">←</button>
+                <button class="next">→</button>
+            </div>
+            <div class="dot-container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <!-- Add more dots as needed -->
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const slides = document.querySelector('.slides');
+        const slide = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            if (index >= slide.length) {
+                currentIndex = 0;
+            } else if (index < 0) {
+                currentIndex = slide.length - 1;
+            } else {
+                currentIndex = index;
+            }
+            const offset = -currentIndex * 100;
+            slides.style.transform = `translateX(${offset}%)`;
+            updateDots();
+        }
+
+        function updateDots() {
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        document.querySelector('.next').addEventListener('click', () => {
+            showSlide(currentIndex + 1);
+        });
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            showSlide(currentIndex - 1);
+        });
+
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        setInterval(() => {
+            showSlide(currentIndex + 1);
+        }, 3000); // Change slide every 3 seconds
+
+        window.addEventListener('resize', () => {
+            showSlide(currentIndex);
+        });
+
+        showSlide(currentIndex);
+    </script>
+</body>
+</html>
